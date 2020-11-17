@@ -39,7 +39,8 @@ public class AccountServiceImpl implements AccountService {
                 ));
        if (account.getBalance().compareTo(amount) < 0){
            throw new InvalidAccountOperationException(
-                   String.format("Account ID:%s does not have enough balance(%s) is less than required withdraw amount: %s.", accountId,account.getBalance(),amount)
+                   String.format("Error withdrawing amount: %s.Insufficient amount: %s in account ID:%s.",
+                           amount,account.getBalance(),accountId)
            );
        }
        account.setBalance(account.getBalance().subtract(amount));
