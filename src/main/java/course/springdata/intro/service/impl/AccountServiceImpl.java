@@ -12,6 +12,8 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
+import java.util.List;
+import java.util.Set;
 
 @Transactional(propagation = Propagation.REQUIRED)
 @Service
@@ -63,4 +65,9 @@ public class AccountServiceImpl implements AccountService {
             depositMoney(amount, toAccountId);
             withdrawMoney(amount, fromAccountId);
     } // commit transaction
+
+    @Override
+    public List<Account> getAllAccounts() {
+        return accountRepo.findAll();
+    }
 }
